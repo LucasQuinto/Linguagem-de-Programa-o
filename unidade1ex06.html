@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+    /* Escrever um programa Javascript que receba três inteiros e mostre qual deles é o maior e qual o menor. */
+
+    let a = parseInt(prompt("Digite um numero: "));
+
+    let b = parseInt(prompt("Digite um numero: "));
+
+    let c = parseInt(prompt("Digite um numero: "));
+
+    if(a < b){
+        if(a < c)
+            menor = a;
+        else
+            menor = c;
+    }
+    else{
+        if(b < c)
+            menor = b;
+        else
+            menor = c;
+    }
+
+
+    if(a > b){
+        if(a > c)
+            maior = a;
+        else
+            maior = c;
+    }
+    else{
+        if(b > c)
+            maior = b;
+        else
+            maior = c;
+    }
+
+    alert("O numero " + maior + " é o maior, e o numero " + menor + " é o menor");
+         
+    </script>
+
+</body>
+</html>
