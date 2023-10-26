@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Contatos</title>
+</head>
+<body>
+    <h1>Lista de Contatos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaContatos">
+            <!-- Os contatos serão adicionados aqui -->
+        </tbody>
+    </table>
+
+    <h2>Add Contato</h2>
+    <form id="formularioContato">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <label for="telefone">Tel:</label>
+        <input type="tel" id="telefone" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <script>
+        var listaContatos = [];
+        var tabelaContatos = document.getElementById('tabelaContatos');
+        var formularioContato = document.getElementById('formularioContato');
+
+        // Função para adicionar um novo contato
+        formularioContato.addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            var nome = document.getElementById('nome').value;
+            var email = document.getElementById('email').value;
+            var telefone = document.getElementById('telefone').value;
+
+            var novoContato = {
+                Nome: nome,
+                Email: email,
+                Telefone: telefone
+            };
+
+            listaContatos.push(novoContato);
+            atualizarTabela();
+            formularioContato.reset();
+        });
+
+        // Função para atualizar a tabela com os contatos
+        function atualizarTabela() {
+            tabelaContatos.innerHTML = '';
+
+            listaContatos.forEach(function (contato, index) {
+                var row = tabelaContatos.insertRow();
+                var cellNome = row.insertCell(0);
+                var cellEmail = row.insertCell(1);
+                var cellTelefone = row.insertCell(2);
+                var cellAcoes = row.insertCell(3);
+
+                cellNome.innerHTML = contato.Nome;
+                cellEmail.innerHTML = contato.Email;
+                cellTelefone.innerHTML = contato.Telefone;
+
+                var botaoExcluir = document.createElement('button');
+                botaoExcluir.textContent = 'Excluir';
+                botaoExcluir.addEventListener('click', function () {
+                    excluirContato(index);
+                });
+
+                var botaoEditar = document.createElement('button');
+                botaoEditar.textContent = 'Editar';
+                botaoEditar.addEventListener('click', function () {
+                    editarContato(index);
+                });
+
+                cellAcoes.appendChild(botaoEditar);
+                cellAcoes.appendChild(botaoExcluir);
+            });
+        }
+
+
+        function excluirContato(index) {
+            listaContatos.splice(index, 1);
+            atualizarTabela();
+        }
+
+        
+        function editarContato(index) {
+            var contato = listaContatos[index];
+            var nome = prompt('Novo nome:', contato.Nome);
+            var email = prompt('Novo email:', contato.Email);
+            var telefone = prompt('Novo telefone:', contato.Telefone);
+
+if (nome !== null && email !== null && telefone !== null) {
+    contato.Nome = nome;
+    contato.Email = email;
+    contato.Telefone = telefone;
+    atualizarTabela();
+}
+}
+</script>
+</body>
+</html>

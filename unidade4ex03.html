@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+    <h1>Hora Atual:</h1>
+    <p id="hora"></p>
+
+    <script>
+
+      function atualizarHora() {
+        let elementoHora = document.getElementById("hora");
+        let agora = new Date();
+        let horas = agora.getHours().toString().padStart(2, "0");
+        let minutos = agora.getMinutes().toString().padStart(2, "0");
+        let segundos = agora.getSeconds().toString().padStart(2, "0");
+        let horaAtual = `${horas}:${minutos}:${segundos}`;
+        elementoHora.textContent = horaAtual;
+      }
+
+      setInterval(atualizarHora, 1000);
+
+      atualizarHora();
+
+    </script>
+  </body>
+</html>
