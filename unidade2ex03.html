@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+
+      function PrimeiraClasse(x) {
+        return function (valor) {
+          return x * valor;
+        };
+      }
+
+      let dobro = PrimeiraClasse(2)
+      let triplo = PrimeiraClasse(3)
+
+      console.log('O dobro é:', dobro(20))
+      console.log('O triplo é:', triplo(10))
+
+    </script>
+  </body>
+</html>
