@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+
+      function SomaDeFuncao(n1, n2) {
+        return function (valor) {
+          return n1(valor) + n2(valor);
+        };
+      }
+
+      function quadrado(x) {
+        return x * x;
+      }
+
+      function dobro(x) {
+        return 2 * x;
+      }
+
+      let resultado = SomaDeFuncao(quadrado, dobro);
+
+      console.log(resultado(3));
+
+    </script>
+  </body>
+</html>
